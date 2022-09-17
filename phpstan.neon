@@ -1,0 +1,9 @@
+parameters:
+    level: 8
+    checkGenericClassInNonGenericObjectType: false
+    paths:
+        - ./app
+        - ./bootstrap
+        - ./config
+        - ./database
+        - ./routes

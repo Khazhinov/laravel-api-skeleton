@@ -1,0 +1,89 @@
+version: '3.9'
+
+networks:
+  laravel-api-skeleton-network:
+    name: laravel-api-skeleton-network
+    driver: bridge
+  laravel-api-skeleton-databases-network:
+    name: laravel-api-skeleton-databases-network
+    driver: bridge
+
+volumes:
+  laravel-api-skeleton-redis-volume:
+  laravel-api-skeleton-postgres-database-volume:
+  laravel-api-skeleton-postgres-home-volume:
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: API.Dockerfile
+    container_name: laravel-api-skeleton-api
+    restart: always
+    command: ["su", "webuser", "-c", "php artisan octane:roadrunner --host=0.0.0.0 --port=80 --rpc-port=6001 --rr-config=.rr.api.yaml"]
+    ports: ["8990:80"]
+    environment:
+      PHP_POOL_NAME: "laravel-api-skeleton-api"
+    networks:
+      - laravel-api-skeleton-network
+      - laravel-api-skeleton-databases-network
+    depends_on:
+      - redis
+      - postgres
+
+  task:
+    build:
+      context: .
+      dockerfile: CLI.Dockerfile
+    container_name: laravel-api-skeleton-task
+    restart: always
+    command: ["su", "webuser", "-c", "php artisan schedule:work"]
+    environment:
+      PHP_POOL_NAME: "laravel-api-skeleton-task"
+    networks:
+      - laravel-api-skeleton-network
+      - laravel-api-skeleton-databases-network
+    depends_on:
+      - redis
+      - postgres
+
+  queue:
+    build:
+      context: .
+      dockerfile: CLI.Dockerfile
+    container_name: laravel-api-skeleton-queue
+    restart: always
+    command: ["su", "webuser", "-c", "php artisan queue:work --tries=3"]
+    environment:
+      PHP_POOL_NAME: "laravel-api-skeleton-queue"
+    networks:
+      - laravel-api-skeleton-network
+      - laravel-api-skeleton-databases-network
+    depends_on:
+      - redis
+      - postgres
+
+  redis:
+    image: redislabs/rejson:2.2.0
+    container_name: laravel-api-skeleton-redis
+    restart: always
+    ports: ["6369:6379"]
+    volumes:
+      - laravel-api-skeleton-redis-volume:/data
+    networks:
+      - laravel-api-skeleton-databases-network
+
+  postgres:
+    image: postgres:14.5-alpine
+    container_name: laravel-api-skeleton-postgres
+    restart: always
+    ports: ["5492:5432"]
+    environment:
+      POSTGRES_DB: laravel-api-skeleton
+      POSTGRES_USER: laravel-api-skeleton
+      POSTGRES_PASSWORD: laravel-api-skeleton
+    volumes:
+      - laravel-api-skeleton-postgres-database-volume:/var/lib/postgresql/data
+      - laravel-api-skeleton-postgres-home-volume:/root
+    networks:
+      - laravel-api-skeleton-databases-network
