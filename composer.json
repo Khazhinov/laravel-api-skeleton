@@ -55,8 +55,8 @@
             "@php artisan ide-helper:eloquent",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
-            "@php artisan ide-helper:models --nowrite --phpstorm-noinspections",
-            "vendor/bin/php-cs-fixer fix --config .php_cs.dist.php --allow-risky=yes"
+            "vendor/bin/php-cs-fixer fix --config .php_cs.dist.php --allow-risky=yes",
+            "@php artisan laravel-api-skeleton:post-install"
         ],
         "analyse": "vendor/bin/phpstan analyse --configuration phpstan.neon",
         "format": "vendor/bin/php-cs-fixer fix --config .php_cs.dist.php --allow-risky=yes",
@@ -64,7 +64,7 @@
             "@php artisan ide-helper:eloquent",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
-            "@php artisan ide-helper:models --nowrite --phpstorm-noinspections"
+            "@php artisan ide-helper:models --write --phpstorm-noinspections"
         ]
     },
     "extra": {
