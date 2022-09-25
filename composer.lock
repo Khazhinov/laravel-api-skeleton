@@ -1823,16 +1823,16 @@
         },
         {
             "name": "khazhinov/laravel-lighty",
-            "version": "1.7.3",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Khazhinov/laravel-lighty.git",
-                "reference": "77ba1d2fb42261020bae9d9f7e15d9b22d7c161d"
+                "reference": "2485bb5c560976e3e3b82f8e5bb8f1e173203122"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Khazhinov/laravel-lighty/zipball/77ba1d2fb42261020bae9d9f7e15d9b22d7c161d",
-                "reference": "77ba1d2fb42261020bae9d9f7e15d9b22d7c161d",
+                "url": "https://api.github.com/repos/Khazhinov/laravel-lighty/zipball/2485bb5c560976e3e3b82f8e5bb8f1e173203122",
+                "reference": "2485bb5c560976e3e3b82f8e5bb8f1e173203122",
                 "shasum": ""
             },
             "require": {
@@ -1897,9 +1897,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Khazhinov/laravel-lighty/issues",
-                "source": "https://github.com/Khazhinov/laravel-lighty/tree/1.7.3"
+                "source": "https://github.com/Khazhinov/laravel-lighty/tree/1.7.4"
             },
-            "time": "2022-09-25T15:53:46+00:00"
+            "time": "2022-09-25T16:28:19+00:00"
         },
         {
             "name": "khazhinov/php-support",
