@@ -8,13 +8,13 @@ use JsonSerializable;
 use Khazhinov\LaravelLighty\Http\Resources\CollectionResource;
 
 /**
- * @property ExampleEntity[] $collection
+ * @property  ExampleEntity[] $collection
  */
 class ExampleEntityCollection extends CollectionResource
 {
     /**
      * @param $request
-     * @return array<mixed>|Arrayable|JsonSerializable
+     * @return array <mixed>|Arrayable|JsonSerializable
      */
     public function toArray($request): array|JsonSerializable|Arrayable
     {

@@ -3,12 +3,44 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Khazhinov\LaravelLighty\Models\Attributes\Relationships\Relationship;
 use Khazhinov\LaravelLighty\Models\Attributes\Relationships\RelationshipTypeEnum;
 use Khazhinov\LaravelLighty\Models\ModelLoggingable;
 
-class ExampleEntity extends ModelLoggingable
+/**
+ * App\Models\ExampleEntity
+ *
+ * @property string|null $id Уникальный идентификатор действия
+ * @property string $created_by Идентификатор пользователя, создавшего запись
+ * @property string|null $updated_by Идентификатор пользователя, создавшего запись
+ * @property string|null $deleted_by Идентификатор пользователя, создавшего запись
+ * @property string $name Наименование
+ * @property \Illuminate\Support\Carbon|null $created_at Временная метка создания записи
+ * @property \Illuminate\Support\Carbon|null $updated_at Временная метка изменения записи
+ * @property \Illuminate\Support\Carbon|null $deleted_at Временная метка удаления записи
+ * @property int|null $position Позиция сущности
+ * @method static \Database\Factories\ExampleEntityFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity newQuery()
+ * @method static \Illuminate\Database\Query\Builder|ExampleEntity onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Query\Builder|ExampleEntity withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|ExampleEntity withoutTrashed()
+ * @mixin \Eloquent
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ */
+final class ExampleEntity extends ModelLoggingable
 {
     use HasFactory;
 
@@ -19,15 +51,15 @@ class ExampleEntity extends ModelLoggingable
 
 //    #[
 //        Relationship(
-//            related:AnotherModel::class,
+//            related: SomethingClass::class,
 //            type: RelationshipTypeEnum::BelongsTo,
 //            aliases: [
-//                'another_model'
+//                'something_class',
 //            ]
 //        )
 //    ]
-//    public function anotherModel(): BelongsTo
+//    public function somethingClass(): BelongsTo
 //    {
-//        return $this->belongsTo(AnotherModel::class);
+//        return $this->belongsTo(SomethingClass::class);
 //    }
 }

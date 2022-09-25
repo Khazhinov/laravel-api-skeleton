@@ -8,17 +8,16 @@ use Khazhinov\LaravelLighty\Http\Requests\BaseRequest;
 
 final class ExampleEntityUpdateRequest extends BaseRequest
 {
-    /**
-     * @return array<string, mixed>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
             'name' => [
-                'sometimes',
+                'required',
                 'string',
                 'max:255',
             ],
         ];
     }
 }
+
+

@@ -13,14 +13,14 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::create('example_entities', function (Blueprint $table) {
-            $table->uuid('id')->primary()->comment('Уникальный идентификатор действия');
+            $table->uuid('id')->primary()->comment('Уникальный идентификатор сущности');
 
-            $table->uuid('created_by')->index()->comment('Идентификатор пользователя, создавшего запись');
+            $table->uuid('created_by')->nullable()->index()->comment('Идентификатор пользователя, создавшего запись');
             $table->uuid('updated_by')->nullable()->index()->comment('Идентификатор пользователя, создавшего запись');
             $table->uuid('deleted_by')->nullable()->index()->comment('Идентификатор пользователя, создавшего запись');
 
-            $table->integer('position')->nullable()->index()->comment('Положение строки');
-            $table->string('name')->index()->comment('Наименование действия');
+            $table->string('name')->index()->comment('Имя сущности');
+            $table->integer('position')->nullable()->comment('Позиция сущности');
 
             $table->timestamp('created_at')->index()->comment('Временная метка создания записи');
             $table->timestamp('updated_at')->nullable()->index()->comment('Временная метка изменения записи');
@@ -32,7 +32,6 @@ return new class () extends Migration {
      * Reverse the migrations.
      *
      * @return void
-     *
      */
     public function down(): void
     {

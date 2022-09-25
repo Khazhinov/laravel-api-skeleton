@@ -8,10 +8,7 @@ use Khazhinov\LaravelLighty\Http\Requests\BaseRequest;
 
 final class ExampleEntityStoreRequest extends BaseRequest
 {
-    /**
-     * @return array<string, mixed>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
             'name' => [
@@ -22,3 +19,5 @@ final class ExampleEntityStoreRequest extends BaseRequest
         ];
     }
 }
+
+

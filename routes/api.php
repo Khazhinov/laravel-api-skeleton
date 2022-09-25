@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 # /api/v1.0/
-Route::group(["namespace" => "App\Http\Controllers\Api\V1_0", "prefix" => "/v1.0", "as" => "api.v1_0"], static function () {
+Route::group(["namespace" => "App\Http\Controllers\Api\V1_0", "prefix" => "/v1.0", "as" => "api.v1_0."], static function () {
     #/api/v1.0/exampleEntities
     Route::group([
         "namespace" => "ExampleEntity",
@@ -30,7 +30,7 @@ Route::group(["namespace" => "App\Http\Controllers\Api\V1_0", "prefix" => "/v1.0
         Route::post("/", "ExampleEntityCRUDController@store")->name("store");
         Route::delete("/", "ExampleEntityCRUDController@bulkDestroy")->name("bulk-destroy");
 
-        #/api/v1.0/exampleEntities/:id
+        #/api/v1.0/exampleEntities/:key
         Route::group([
             "prefix" => "/{key}",
         ], static function () {
@@ -39,4 +39,6 @@ Route::group(["namespace" => "App\Http\Controllers\Api\V1_0", "prefix" => "/v1.0
             Route::delete("/", "ExampleEntityCRUDController@destroy")->name("destroy");
         });
     });
+
+
 });

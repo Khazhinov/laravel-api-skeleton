@@ -40,7 +40,7 @@ class InitProjectCommand extends Command
 
         foreach ($needle_files as $needle_file => $result_file) {
             $content = @file_get_contents(base_path($needle_file));
-            unlink(base_path($needle_file));
+//            unlink(base_path($needle_file));
             $data = str_ireplace("laravel-api-skeleton", $project_name, $content);
             if (file_exists(base_path($result_file))) {
                 unlink(base_path($result_file));

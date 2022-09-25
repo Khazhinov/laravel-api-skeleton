@@ -7,8 +7,12 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use JsonSerializable;
 use Khazhinov\LaravelLighty\Http\Resources\SingleResource;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
-/** @property ExampleEntity $resource */
+/**
+ * @property  ExampleEntity $resource
+ */
 class ExampleEntityResource extends SingleResource
 {
     /**
@@ -16,28 +20,28 @@ class ExampleEntityResource extends SingleResource
      *
      * @param  Request  $request
      * @return array<int|string, mixed>|Arrayable|JsonSerializable
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function toArray($request): array|JsonSerializable|Arrayable
     {
         return [
             'id' => $this->resource->id,
-            'position' => $this->resource->position,
             'name' => $this->resource->name,
 
             // Для сложных полей, вычисление которых занимает большое время
-//            $this->mergeWhenByClosure($this->hasWith('properties.test'), static function ($context) {
-//                return [
-//                     'test' => $context->test
-//                ];
-//            }),
+            $this->mergeWhenByClosure($this->hasWith('properties.test'), static function ($context) {
+                return [
+                    // 'test' => $context->test
+                ];
+            }),
 
             // Для отношений, позволяет избегать проблемы N+1
-//            $this->mergeWhenByClosure($this->hasWith('relationships.another_model'), static function ($context) {
-//                return [
-//                    'another_model' => new AnotherModel($context->anotherModel),
-//                ];
-//            }),
-
+            $this->mergeWhenByClosure($this->hasWith('relationships.test'), static function ($context) {
+                return [
+                    // 'test' => $context->test
+                ];
+            }),
 
             $this->withLoggingableAttributes(),
         ];
