@@ -1,3 +1,6 @@
+
+<p align="center"><img src="/art/header.png" alt="Social Card of Laravel API Skeleton"></p>
+
 # laravel-api-skeleton
 Скелет Laravel проекта для разработки API
 
