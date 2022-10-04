@@ -7,8 +7,8 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
-        "khazhinov/laravel-lighty": "^1.0",
-        "laravel/framework": "^9.19",
+        "khazhinov/laravel-lighty": "^1.7",
+        "laravel/framework": "^9.34",
         "laravel/octane": "^1.3",
         "laravel/sanctum": "^3.0",
         "laravel/telescope": "^4.9",
