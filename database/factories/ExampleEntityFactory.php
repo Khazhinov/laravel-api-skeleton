@@ -17,6 +17,7 @@ class ExampleEntityFactory extends Factory
      * @var string
      */
     protected $model = ExampleEntity::class;
+
     /**
      * Define the model's default state.
      *

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Khazhinov\LaravelLighty\Models\Attributes\Relationships\Relationship;
 use Khazhinov\LaravelLighty\Models\Attributes\Relationships\RelationshipTypeEnum;
 use Khazhinov\LaravelLighty\Models\ModelLoggingable;

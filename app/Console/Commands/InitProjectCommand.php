@@ -41,6 +41,7 @@ class InitProjectCommand extends Command
         ];
 
         foreach ($needle_files as $needle_file => $result_file) {
+            /** @var string $content */
             $content = @file_get_contents(base_path($needle_file));
             $data = str_ireplace("laravel-api-skeleton", $project_name, $content);
             if (file_exists(base_path($result_file))) {
@@ -49,6 +50,7 @@ class InitProjectCommand extends Command
             @file_put_contents(base_path($result_file), $data);
             unlink(base_path($needle_file));
         }
+
         return 0;
     }
 }

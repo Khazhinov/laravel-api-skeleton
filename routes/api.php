@@ -39,6 +39,4 @@ Route::group(["namespace" => "App\Http\Controllers\Api\V1_0", "prefix" => "/v1.0
             Route::delete("/", "ExampleEntityCRUDController@destroy")->name("destroy");
         });
     });
-
-
 });

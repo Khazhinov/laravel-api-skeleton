@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Http\Controllers\Api\V1_0\ExampleEntity;
 
@@ -262,6 +262,9 @@ final class ExampleEntityCRUDController extends ApiCRUDController
      */
     protected function getQueryBuilder(): Builder|DatabaseBuilder
     {
-        return ExampleEntity::query();
+        /** @var Builder|DatabaseBuilder $builder */
+        $builder = ExampleEntity::query();
+
+        return $builder;
     }
 }
