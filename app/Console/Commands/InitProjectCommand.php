@@ -18,7 +18,7 @@ class InitProjectCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Подготовка каталога после первичной установки';
 
     /**
      * Execute the console command.
@@ -32,6 +32,8 @@ class InitProjectCommand extends Command
         $dir = last($exploded_base_path);
         $project_name = helper_string_snake($dir);
 
+        @rmdir(base_path('art'));
+
         $needle_files = [
             'docker-compose.yaml.stub' => 'docker-compose.yaml',
             'docker-compose-dev.yaml.stub' => 'docker-compose-dev.yaml',
@@ -40,12 +42,12 @@ class InitProjectCommand extends Command
 
         foreach ($needle_files as $needle_file => $result_file) {
             $content = @file_get_contents(base_path($needle_file));
-//            unlink(base_path($needle_file));
             $data = str_ireplace("laravel-api-skeleton", $project_name, $content);
             if (file_exists(base_path($result_file))) {
                 unlink(base_path($result_file));
             }
             @file_put_contents(base_path($result_file), $data);
+            unlink(base_path($needle_file));
         }
         return 0;
     }

@@ -11,6 +11,8 @@ FROM khazhinov/docker-php:8.1-cli
 
 COPY . /var/www/app
 
+RUN cp /var/www/app/docker/app/custom.ini /etc/php/8.1/cli/conf.d/custom.ini
+
 COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 COPY --from=roadrunner /usr/bin/rr /var/www/app/rr
 

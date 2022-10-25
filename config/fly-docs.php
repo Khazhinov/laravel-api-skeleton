@@ -58,7 +58,7 @@ return [
 
         'servers' => [
             [
-                'url' => env('APP_URL', 'http://localhost'),
+                'url' => env('APP_URL', 'http://localhost:8000'),
                 'description' => 'Development server',
                 'variables' => [
 //                    'VARIABLE' => [

@@ -17,7 +17,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: API.Dockerfile
+      dockerfile: docker/app/Dockerfile
     container_name: laravel-api-skeleton-api
     restart: always
     command: ["su", "webuser", "-c", "php artisan octane:roadrunner --host=0.0.0.0 --port=80 --rpc-port=6001 --rr-config=.rr.api.yaml"]
@@ -34,7 +34,7 @@ services:
   task:
     build:
       context: .
-      dockerfile: CLI.Dockerfile
+      dockerfile: docker/app/Dockerfile
     container_name: laravel-api-skeleton-task
     restart: always
     command: ["su", "webuser", "-c", "php artisan schedule:work"]
@@ -50,7 +50,7 @@ services:
   queue:
     build:
       context: .
-      dockerfile: CLI.Dockerfile
+      dockerfile: docker/app/Dockerfile
     container_name: laravel-api-skeleton-queue
     restart: always
     command: ["su", "webuser", "-c", "php artisan queue:work --tries=3"]

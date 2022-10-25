@@ -59,12 +59,12 @@
             "@php artisan laravel-api-skeleton:post-install"
         ],
         "analyse": "vendor/bin/phpstan analyse --configuration phpstan.neon",
-        "format": "vendor/bin/php-cs-fixer fix --config .php_cs.dist.php --allow-risky=yes",
+        "format": "vendor/bin/php-cs-fixer fix --config cs_dist.php --allow-risky=yes",
         "helpers": [
             "@php artisan ide-helper:eloquent",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
-            "@php artisan ide-helper:models --write --phpstorm-noinspections"
+            "@php artisan ide-helper:models --write -R"
         ]
     },
     "extra": {
