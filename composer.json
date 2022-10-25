@@ -55,7 +55,7 @@
             "@php artisan ide-helper:eloquent",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
-            "vendor/bin/php-cs-fixer fix --config .php_cs.dist.php --allow-risky=yes",
+            "vendor/bin/php-cs-fixer fix --config cs_dist.php --allow-risky=yes",
             "@php artisan laravel-api-skeleton:post-install"
         ],
         "analyse": "vendor/bin/phpstan analyse --configuration phpstan.neon",
