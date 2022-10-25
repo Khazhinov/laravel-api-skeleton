@@ -37,8 +37,6 @@ use Khazhinov\LaravelLighty\Models\ModelLoggingable;
  * @method static \Illuminate\Database\Query\Builder|ExampleEntity withTrashed()
  * @method static \Illuminate\Database\Query\Builder|ExampleEntity withoutTrashed()
  * @mixin \Eloquent
- * @noinspection PhpFullyQualifiedNameUsageInspection
- * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
  */
 final class ExampleEntity extends ModelLoggingable
 {
