@@ -19,7 +19,7 @@ class DefaultUsersSeeder extends Seeder
     {
         /** @var User $user */
         $user = User::create(SystemUserPayloadService::getSystemUserPayload());
-        $user->markEmailAsVerified();
+//        $user->markEmailAsVerified();
         $user->save();
     }
 }

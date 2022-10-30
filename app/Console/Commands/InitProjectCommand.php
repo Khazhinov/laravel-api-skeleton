@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 
 class InitProjectCommand extends Command
 {
@@ -32,7 +33,7 @@ class InitProjectCommand extends Command
         $dir = last($exploded_base_path);
         $project_name = helper_string_snake($dir);
 
-        @rmdir(base_path('art'));
+        File::deleteDirectory(base_path('art'));
 
         $needle_files = [
             'docker-compose.yaml.stub' => 'docker-compose.yaml',
@@ -45,10 +46,10 @@ class InitProjectCommand extends Command
             $content = @file_get_contents(base_path($needle_file));
             $data = str_ireplace("laravel-api-skeleton", $project_name, $content);
             if (file_exists(base_path($result_file))) {
-                unlink(base_path($result_file));
+                File::delete(base_path($result_file));
             }
             @file_put_contents(base_path($result_file), $data);
-            unlink(base_path($needle_file));
+            File::delete(base_path($needle_file));
         }
 
         return 0;
