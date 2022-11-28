@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Khazhinov\LaravelLighty\Models\AuthenticatableModel;
+use Khazhinov\LaravelLighty\Models\Casts\HashCast;
 use Khazhinov\LaravelLighty\Models\UUID\Uuidable;
 use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
 use Laravel\Sanctum\HasApiTokens;
@@ -90,5 +91,6 @@ final class User extends AuthenticatableModel implements UuidableContract
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => HashCast::class,
     ];
 }
