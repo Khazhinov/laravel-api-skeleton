@@ -37,8 +37,8 @@ class InitProjectCommand extends Command
 
         $needle_files = [
             'docker-compose.yaml.stub' => 'docker-compose.yaml',
-            'docker-compose-dev.yaml.stub' => 'docker-compose-dev.yaml',
-            '.env.local' => '.env',
+            'docker-compose-containerized.yaml.stub' => 'docker-compose-containerized.yaml',
+            '.env.localhost' => '.env',
         ];
 
         foreach ($needle_files as $needle_file => $result_file) {

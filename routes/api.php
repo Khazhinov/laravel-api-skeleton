@@ -14,16 +14,44 @@ use Illuminate\Support\Facades\Route;
 */
 
 # /api/v1.0/
-Route::group(["namespace" => "App\Http\Controllers\Api\V1_0", "prefix" => "/v1.0", "as" => "api.v1_0."], static function () {
+Route::group([
+    "namespace" => "App\Http\Controllers\Api\V1_0",
+    "prefix" => "/v1.0",
+    "as" => "api.v1_0.",
+], static function () {
+    # /api/v1.0/auth
+    Route::group([
+        "namespace" => "Auth",
+        "prefix" => "/auth",
+    ], static function () {
+        Route::post("/registration", "AuthController@registration")->name("registration");
+        Route::post("/login", "AuthController@login")->name("login");
+    });
+});
+
+
+# /api/v1.0/
+Route::group([
+    "namespace" => "App\Http\Controllers\Api\V1_0",
+    "prefix" => "/v1.0",
+    "as" => "api.v1_0.",
+    "middleware" => ["auth:sanctum"],
+], static function () {
+    # /api/v1.0/auth
+    Route::group([
+        "namespace" => "Auth",
+        "prefix" => "/auth",
+    ], static function () {
+        Route::post("/logout", "AuthController@logout")->name("logout");
+        Route::get("/profile", "AuthController@profile")->name("profile");
+    });
+
     #/api/v1.0/exampleEntities
     Route::group([
         "namespace" => "ExampleEntity",
         "prefix" => "/exampleEntities",
         "as" => "example_entities.",
     ], static function () {
-        Route::get("/validations/{method?}", "ExampleEntityCRUDController@getValidations")->name("validations");
-
-        Route::get("/", "ExampleEntityCRUDController@index")->name("index");
         Route::post("/search", "ExampleEntityCRUDController@index")->name("search");
         Route::post("/setPosition", "ExampleEntityCRUDController@setPosition")->name("set-position");
 

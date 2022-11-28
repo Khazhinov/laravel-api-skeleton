@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Khazhinov\LaravelLighty\Models\Attributes\Relationships\Relationship;
-use Khazhinov\LaravelLighty\Models\Attributes\Relationships\RelationshipTypeEnum;
 use Khazhinov\LaravelLighty\Models\ModelLoggingable;
+use Khazhinov\LaravelLighty\Models\UUID\Uuidable;
+use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
 
 /**
  * App\Models\ExampleEntity
@@ -37,8 +37,9 @@ use Khazhinov\LaravelLighty\Models\ModelLoggingable;
  * @method static \Illuminate\Database\Query\Builder|ExampleEntity withoutTrashed()
  * @mixin \Eloquent
  */
-final class ExampleEntity extends ModelLoggingable
+final class ExampleEntity extends ModelLoggingable implements UuidableContract
 {
+    use Uuidable;
     use HasFactory;
 
     protected $fillable = [

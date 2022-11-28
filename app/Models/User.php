@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Khazhinov\LaravelLighty\Models\AuthenticatableModel;
+use Khazhinov\LaravelLighty\Models\UUID\Uuidable;
+use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -49,11 +53,14 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @mixin \Eloquent
  */
-class User extends AuthenticatableModel
+final class User extends AuthenticatableModel implements UuidableContract
 {
+    use Uuidable;
+//    use MustVerifyEmail;
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
