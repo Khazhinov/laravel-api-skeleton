@@ -23,6 +23,7 @@ return new class() extends Migration {
             $table->string('token', 64)->unique()->index()->comment('Токен');
             $table->text('abilities')->nullable()->comment('Разрешения токена');
             $table->timestamp('last_used_at')->nullable()->index()->comment('Временная метка последнего использования токена');
+            $table->timestamp('expires_at')->nullable()->index()->comment('Временная метка окончания действия токена');
             $table->timestamp('created_at')->index()->comment('Временная метка создания записи');
             $table->timestamp('updated_at')->nullable()->index()->comment('Временная метка изменения записи');
         });
