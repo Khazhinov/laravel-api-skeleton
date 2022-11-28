@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class InitProjectCommand extends Command
 {
@@ -31,7 +32,7 @@ class InitProjectCommand extends Command
         $base_path = base_path();
         $exploded_base_path = explode(DIRECTORY_SEPARATOR, $base_path);
         $dir = last($exploded_base_path);
-        $project_name = helper_string_snake($dir);
+        $project_name = Str::kebab($dir);
 
         File::deleteDirectory(base_path('art'));
 
