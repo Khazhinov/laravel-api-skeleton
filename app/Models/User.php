@@ -57,6 +57,7 @@ use Laravel\Sanctum\HasApiTokens;
 final class User extends AuthenticatableModel implements UuidableContract
 {
     use Uuidable;
+
 //    use MustVerifyEmail;
     use HasApiTokens;
     use HasFactory;
