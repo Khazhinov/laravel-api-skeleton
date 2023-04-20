@@ -47,17 +47,17 @@ final class ExampleEntity extends ModelLoggingable implements UuidableContract
         'position',
     ];
 
-//    #[
-//        Relationship(
-//            related: SomethingClass::class,
-//            type: RelationshipTypeEnum::BelongsTo,
-//            aliases: [
-//                'something_class',
-//            ]
-//        )
-//    ]
-//    public function somethingClass(): BelongsTo
-//    {
-//        return $this->belongsTo(SomethingClass::class);
-//    }
+    //    #[
+    //        Relationship(
+    //            related: SomethingClass::class,
+    //            type: RelationshipTypeEnum::BelongsTo,
+    //            aliases: [
+    //                'something_class',
+    //            ]
+    //        )
+    //    ]
+    //    public function somethingClass(): BelongsTo
+    //    {
+    //        return $this->belongsTo(SomethingClass::class);
+    //    }
 }

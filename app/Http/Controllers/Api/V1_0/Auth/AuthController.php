@@ -56,7 +56,7 @@ class AuthController extends ApiController implements WithDBTransactionInterface
             }
         }
 
-//        $user->markEmailAsVerified();
+        //        $user->markEmailAsVerified();
 
         $this->beginTransaction();
 
