@@ -66,23 +66,29 @@ $ php artisan lighty:generator AnotherEntity v1.0 --migration
 Сборка контейнера осуществляется с помощью:
 
 ```bash
-docker-compose -f docker-compose-containerized.yaml build
+$ docker-compose -f docker-compose-containerized.yaml build
 ```
 
 Запуск требуемого окружения осуществляется с помощью:
 
 ```bash
-docker-compose -f docker-compose-containerized.yaml up -d
+$ docker-compose -f docker-compose-containerized.yaml up -d
+```
+
+Миграции выполняются автоматически при запуске любого контейнера, а seed нужно сделать руками один раз
+
+```bash
+$ docker-compose -f docker-compose-containerized.yaml exec -T api php artisan db:seed
 ```
 
 Для остановки используй:
 
 ```bash
-docker-compose -f docker-compose-containerized.yaml down
+$ docker-compose -f docker-compose-containerized.yaml down
 ```
 
 А это пример запуска команды внутри контейнера, когда в твоём локальном окружении сейчас нет PHP:
 
 ```bash
-docker-compose -f docker-compose-containerized.yaml exec -T api php artisan migrate:refresh --seed
+$ docker-compose -f docker-compose-containerized.yaml exec -T api php artisan migrate:refresh --seed
 ```
