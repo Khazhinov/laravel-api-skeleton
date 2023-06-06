@@ -19,6 +19,11 @@ final class ExampleEntityStoreRequest extends BaseRequest
                 'string',
                 'max:255',
             ],
+            'position' => [
+                'sometimes',
+                'int',
+                'min:0',
+            ],
         ];
     }
 }

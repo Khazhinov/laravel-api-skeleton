@@ -9,8 +9,6 @@ use App\Http\Requests\ExampleEntity\ExampleEntityUpdateRequest;
 use App\Http\Resources\ExampleEntity\ExampleEntityCollection;
 use App\Http\Resources\ExampleEntity\ExampleEntityResource;
 use App\Models\ExampleEntity;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Query\Builder as DatabaseBuilder;
 use JsonException;
 use Khazhinov\LaravelFlyDocs\Generator\Attributes as OpenApi;
 use Khazhinov\LaravelLighty\Http\Controllers\Api\CRUD\ApiCRUDController;
@@ -26,6 +24,7 @@ use Khazhinov\LaravelLighty\OpenApi\Complexes\SetPositionActionComplex;
 use Khazhinov\LaravelLighty\OpenApi\Complexes\ShowActionComplex;
 use Khazhinov\LaravelLighty\OpenApi\Complexes\StoreActionComplex;
 use Khazhinov\LaravelLighty\OpenApi\Complexes\UpdateActionComplex;
+use Khazhinov\LaravelLighty\Services\CRUD\DTO\ActionClosureDataDTO;
 use Khazhinov\LaravelLighty\Transaction\WithDBTransaction;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -122,8 +121,8 @@ final class ExampleEntityCRUDController extends ApiCRUDController
         return $this->bulkDestroyAction(
             request: $request,
             options: [],
-            closure: static function (mixed $model_class, ActionClosureModeEnum $mode) {
-                if ($mode === ActionClosureModeEnum::AfterDeleting) {
+            closure: static function (ActionClosureDataDTO $closure_dto) {
+                if ($closure_dto->mode === ActionClosureModeEnum::AfterDeleting) {
                     // do something...
                 }
             }
@@ -177,8 +176,8 @@ final class ExampleEntityCRUDController extends ApiCRUDController
         return $this->storeAction(
             request: $request,
             options: [],
-            closure: static function (mixed $model_class, ActionClosureModeEnum $mode) {
-                if ($mode === ActionClosureModeEnum::BeforeFilling) {
+            closure: static function (ActionClosureDataDTO $closure_dto) {
+                if ($closure_dto->mode === ActionClosureModeEnum::BeforeFilling) {
                     // do something...
                 }
             }
@@ -210,8 +209,8 @@ final class ExampleEntityCRUDController extends ApiCRUDController
             request: $request,
             key: $key,
             options: [],
-            closure: static function (mixed $model_class, ActionClosureModeEnum $mode) {
-                if ($mode === ActionClosureModeEnum::AfterSave) {
+            closure: static function (ActionClosureDataDTO $closure_dto) {
+                if ($closure_dto->mode === ActionClosureModeEnum::AfterSave) {
                     // do something...
                 }
             }
@@ -239,32 +238,11 @@ final class ExampleEntityCRUDController extends ApiCRUDController
         return $this->destroyAction(
             key: $key,
             options: [],
-            closure: static function (mixed $model_class, ActionClosureModeEnum $mode) {
-                if ($mode === ActionClosureModeEnum::BeforeDeleting) {
+            closure: static function (ActionClosureDataDTO $closure_dto) {
+                if ($closure_dto->mode === ActionClosureModeEnum::BeforeDeleting) {
                     // do something...
                 }
             }
         );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function getDefaultOrder(): array
-    {
-        return [
-            '-id',
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function getQueryBuilder(): Builder|DatabaseBuilder
-    {
-        /** @var Builder|DatabaseBuilder $builder */
-        $builder = ExampleEntity::query();
-
-        return $builder;
     }
 }

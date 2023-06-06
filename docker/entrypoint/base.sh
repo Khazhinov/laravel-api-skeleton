@@ -1,6 +1,3 @@
-#!/bin/sh
-# Выполняем команды в директории с приложением
+#!/bin/bash
 cd /app/
-
-# Запускаем базовые пусконаладочные скрипты
-#php artisan about
+php artisan optimize
