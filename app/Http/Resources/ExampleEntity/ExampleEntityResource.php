@@ -31,18 +31,18 @@ class ExampleEntityResource extends SingleResource
             'position' => $this->resource->position,
 
             // Для сложных полей, вычисление которых занимает большое время
-            $this->mergeWhenByClosure($this->hasWith('properties.test'), static function ($context) {
-                return [
-                    // 'test' => $context->test
-                ];
-            }),
+            //$this->mergeWhenByClosure($this->hasWith('properties.test'), static function ($context) {
+            //    return [
+            //        // 'test' => $context->test
+            //    ];
+            //}),
 
             // Для отношений, позволяет избегать проблемы N+1
-            $this->mergeWhenByClosure($this->hasWith('relationships.test'), static function ($context) {
-                return [
-                    // 'test' => $context->test
-                ];
-            }),
+            //$this->mergeWhenByClosure($this->hasWith('relationships.test'), static function ($context) {
+            //    return [
+            //        // 'test' => $context->test
+            //    ];
+            //}),
 
             'created_at' => $this->resource->created_at,
             'updated_at' => $this->resource->updated_at,

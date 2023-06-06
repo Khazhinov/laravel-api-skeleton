@@ -12,7 +12,7 @@ volumes:
 
 services:
   redis:
-    image: redislabs/rejson:2.2.0
+    image: redislabs/rejson:2.4.3
     container_name: laravel-api-skeleton-redis
     restart: always
     ports: ["6379:6379"]
@@ -22,7 +22,7 @@ services:
       - laravel-api-skeleton-databases-network
 
   postgres:
-    image: postgres:12.9-alpine
+    image: postgres:15.2
     container_name: laravel-api-skeleton-postgres
     restart: always
     ports: ["5432:5432"]

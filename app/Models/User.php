@@ -22,20 +22,20 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string|null $deleted_by Идентификатор пользователя, создавшего запись
  * @property string $name Имя пользователя
  * @property string $email Email адрес пользователя
- * @property string $password Пароль пользователя
+ * @property mixed|null $password Пароль пользователя
  * @property string|null $remember_token Токен долгоживущей сессии
  * @property \Illuminate\Support\Carbon|null $email_verified_at Временная метка подтверждения email адреса
- * @property \Illuminate\Support\Carbon|null $created_at Временная метка создания записи
+ * @property \Illuminate\Support\Carbon $created_at Временная метка создания записи
  * @property \Illuminate\Support\Carbon|null $updated_at Временная метка изменения записи
  * @property \Illuminate\Support\Carbon|null $deleted_at Временная метка удаления записи
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
- * @method static \Database\Factories\UserFactory factory(...$parameters)
+ * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
@@ -50,8 +50,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
- * @method static \Illuminate\Database\Query\Builder|User withTrashed()
- * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
  * @mixin \Eloquent
  */
 final class User extends AuthenticatableModel implements UuidableContract

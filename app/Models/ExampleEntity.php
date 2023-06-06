@@ -13,12 +13,32 @@ use Khazhinov\LaravelLighty\Models\UUID\UuidableContract;
 /**
  * App\Models\ExampleEntity
  *
- * @property string|null $id Уникальный идентификатор
- * @property string $name Наименование
+ * @property string $id Уникальный идентификатор сущности
+ * @property string|null $created_by Идентификатор пользователя, создавшего запись
+ * @property string|null $updated_by Идентификатор пользователя, создавшего запись
+ * @property string|null $deleted_by Идентификатор пользователя, создавшего запись
+ * @property string $name Имя сущности
  * @property int|null $position Позиция сущности
- * @property \Illuminate\Support\Carbon|null $created_at Временная метка создания записи
+ * @property \Illuminate\Support\Carbon $created_at Временная метка создания записи
  * @property \Illuminate\Support\Carbon|null $updated_at Временная метка изменения записи
  * @property \Illuminate\Support\Carbon|null $deleted_at Временная метка удаления записи
+ * @method static \Database\Factories\ExampleEntityFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ExampleEntity withoutTrashed()
+ * @mixin \Eloquent
  */
 final class ExampleEntity extends Model implements UuidableContract
 {
