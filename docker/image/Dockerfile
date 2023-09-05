@@ -1,18 +1,19 @@
 # Базовый образ RouaRunner: https://roadrunner.dev/
-FROM spiralscout/roadrunner:2023.1.3 AS roadrunner
+FROM spiralscout/roadrunner:2023.2.2 AS roadrunner
 # Базовый образ: https://github.com/serversideup/docker-php
-FROM khazhinov/docker-php:8.1-cli
+FROM khazhinov/docker-php:8.2-cli
 
 ## Пример для установки дополнительных расширений PHP
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends git make php8.1-dev php8.1-intl php-pear php8.1-bcmath \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+#RUN apt-get update \
+#    && apt-get install -y --no-install-recommends  \
+#    php8.1-bcmath \
+#    && apt-get clean \
+#    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # pecl включен в сборку, можно легко устанавливать расширения из исходников
 #RUN pecl install mongodb-1.15.2
 
-COPY ./docker/image/conf.d/*.ini /etc/php/8.1/cli/conf.d/
+#COPY ./docker/image/conf.d/*.ini /etc/php/8.2/cli/conf.d/
 
 # Копирование файлов проекта
 COPY . /app

@@ -1,14 +1,18 @@
-version: '2.7'
+version: '3'
 http:
     address: 0.0.0.0:80
     pool:
-        num_workers: 0
-        max_jobs: 500
+        num_workers: 10
+        max_jobs: 100
         supervisor:
             exec_ttl: 30s
     static:
-        dir: "/var/www/app/public"
+        dir: "/app/public"
     middleware: [ "static" ]
+
+status:
+    address: 0.0.0.0:2114
+    unavailable_status_code: 501
 
 server:
     command: "php ./vendor/bin/roadrunner-worker"
@@ -19,4 +23,4 @@ rpc:
 logs:
     mode: production
     output: stdout
-    encoding: json
+    encoding: console
