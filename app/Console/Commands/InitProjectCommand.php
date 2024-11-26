@@ -38,7 +38,7 @@ class InitProjectCommand extends Command
 
         $needle_files = [
             'docker-compose.yaml.stub' => 'docker-compose.yaml',
-            'docker-compose-containerized.yaml.stub' => 'docker-compose-containerized.yaml',
+            'docker-compose-databases.yaml.stub' => 'docker-compose-databases.yaml',
             '.env.localhost' => '.env',
         ];
 

@@ -29,13 +29,12 @@ Route::group([
     });
 });
 
-
 # /api/v1.0/
 Route::group([
     "namespace" => "App\Http\Controllers\Api\V1_0",
     "prefix" => "/v1.0",
     "as" => "api.v1_0.",
-    "middleware" => ["auth:sanctum"],
+//    "middleware" => ["auth:sanctum"],
 ], static function () {
     # /api/v1.0/auth
     Route::group([

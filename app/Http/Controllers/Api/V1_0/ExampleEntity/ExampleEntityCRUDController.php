@@ -147,6 +147,8 @@ final class ExampleEntityCRUDController extends ApiCRUDController
     )]
     public function show(string $key): Response
     {
+        dd(app());
+
         return $this->showAction(
             key: $key,
             options: []

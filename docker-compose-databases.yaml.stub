@@ -1,0 +1,35 @@
+networks:
+  laravel-api-skeleton-databases-network:
+    name: laravel-api-skeleton-databases-network
+    driver: bridge
+
+volumes:
+  laravel-api-skeleton-redis-volume:
+  laravel-api-skeleton-postgres-database-volume:
+  laravel-api-skeleton-postgres-home-volume:
+
+services:
+  redis:
+    image: redislabs/rejson:2.6.13
+    container_name: laravel-api-skeleton-redis
+    restart: always
+    ports: ["6379:6379"]
+    volumes:
+      - laravel-api-skeleton-redis-volume:/data
+    networks:
+      - laravel-api-skeleton-databases-network
+
+  postgres:
+    image: postgres:17.1-alpine
+    container_name: laravel-api-skeleton-postgres
+    restart: always
+    ports: ["5432:5432"]
+    environment:
+      POSTGRES_DB: laravel-api-skeleton
+      POSTGRES_USER: laravel-api-skeleton
+      POSTGRES_PASSWORD: laravel-api-skeleton
+    volumes:
+      - laravel-api-skeleton-postgres-database-volume:/var/lib/postgresql/data
+      - laravel-api-skeleton-postgres-home-volume:/root
+    networks:
+      - laravel-api-skeleton-databases-network

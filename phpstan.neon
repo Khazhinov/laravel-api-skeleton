@@ -1,12 +1,10 @@
 parameters:
-    level: 8
-    checkGenericClassInNonGenericObjectType: false
+    level: 10
     bootstrapFiles:
         - _ide_helper.php
     paths:
         - ./app
         - ./bootstrap
-        - ./config
         - ./database/migrations
         - ./database/seeders
         - ./routes

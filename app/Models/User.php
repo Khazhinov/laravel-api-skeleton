@@ -22,7 +22,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string|null $deleted_by Идентификатор пользователя, создавшего запись
  * @property string $name Имя пользователя
  * @property string $email Email адрес пользователя
- * @property mixed|null $password Пароль пользователя
+ * @property mixed $password Пароль пользователя
  * @property string|null $remember_token Токен долгоживущей сессии
  * @property \Illuminate\Support\Carbon|null $email_verified_at Временная метка подтверждения email адреса
  * @property \Illuminate\Support\Carbon $created_at Временная метка создания записи
@@ -33,32 +33,32 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|User query()
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User withTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutTrashed()
  * @mixin \Eloquent
  */
 final class User extends AuthenticatableModel implements UuidableContract
 {
     use Uuidable;
 
-    //    use MustVerifyEmail;
+    //use MustVerifyEmail;
     use HasApiTokens;
     use HasFactory;
     use Notifiable;

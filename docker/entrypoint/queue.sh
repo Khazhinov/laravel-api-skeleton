@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 /app/docker/entrypoint/base.sh
 cd /app/
-php artisan queue:work --tries=3
+cp -r docker/image/supervisor/queue/*.conf /etc/supervisor/conf.d/
+/usr/bin/supervisord
